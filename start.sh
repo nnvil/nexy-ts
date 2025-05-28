@@ -1,0 +1,2 @@
+bun migrate
+bun start

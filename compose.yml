@@ -1,0 +1,10 @@
+services:
+    server:
+        image: nexy
+        volumes:
+            - data:/app/data
+        build:
+            context: .
+            dockerfile: Dockerfile
+volumes:
+    data:
