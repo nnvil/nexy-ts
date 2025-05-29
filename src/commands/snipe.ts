@@ -15,6 +15,6 @@ export class SnipeCmd {
                 flags: MessageFlags.Ephemeral,
             });
         }
-        await inter.reply(`${snipeObject.author} wysłał: ${snipeObject.content}`);
+        await inter.reply(`**${snipeObject.author.id}** wysłał: ${snipeObject.content}`);
     }
 }
