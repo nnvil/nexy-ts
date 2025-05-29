@@ -2,6 +2,19 @@ import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
 
+const fs = require("fs");
+const toml = require("toml");
+
+interface Config {
+    ignored_users: {
+        ids: string[];
+    };
+}
+
+const config: Config = toml.parse(fs.readFileSync("config.toml", "utf-8"));
+
+export const ignoredUsers = config.ignored_users.ids;
+
 interface Snipe {
     content: string | null;
     author: string | undefined;

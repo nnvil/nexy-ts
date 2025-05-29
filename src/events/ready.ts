@@ -1,4 +1,5 @@
 import { Client, Discord, On, type ArgsOf } from "discordx";
+import { ignoredUsers } from "../index";
 
 @Discord()
 export class Ready {
@@ -18,6 +19,7 @@ export class Ready {
 
                 const badMems = members.cache.filter(
                     (m) =>
+                        !ignoredUsers.includes(m.id) &&
                         m.roles.cache.get(Bun.env.UNDERAGE_ROLE!) != undefined
                 );
                 badMems.forEach((m) => m.ban({ reason: "underage" }).then());

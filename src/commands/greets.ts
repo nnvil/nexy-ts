@@ -5,9 +5,9 @@ import {
     type CommandInteraction,
 } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
-import db from "../db";
-import { leaveTable, joinTable } from "../db/schema";
 import { sql } from "drizzle-orm";
+import db from "../db";
+import { joinTable, leaveTable } from "../db/schema";
 
 @Discord()
 @SlashGroup({

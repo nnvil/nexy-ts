@@ -36,3 +36,5 @@ bump.json
 *.sqlite
 
 migrations
+
+config.toml

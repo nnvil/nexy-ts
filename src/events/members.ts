@@ -5,6 +5,8 @@ import { eq } from "drizzle-orm";
 import db from "../db";
 import { joinTable, leaveTable } from "../db/schema";
 
+import { ignoredUsers } from "../index";
+
 @Discord()
 export class MemberEvents {
     @On({ event: "guildMemberAdd" })
@@ -61,6 +63,10 @@ export class MemberEvents {
 
     @On({ event: "guildMemberUpdate" })
     async memberUpdate([_, newM]: ArgsOf<"guildMemberUpdate">) {
+        if (ignoredUsers.includes(newM.id)) {
+            return;
+        }
+
         if (newM.roles.cache.get(Bun.env.UNDERAGE_ROLE!)) {
             await newM.ban({
                 reason: "underage",
